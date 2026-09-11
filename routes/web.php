@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('products.index');
 });
 
-Route::resource('products', 'App\\Http\\Controllers\\ProductController');
+Route::resource('products', ProductController::class);// Source - https://stackoverflow.com/a/76978560
+// Posted by MorganFreeFarm
+// Retrieved 2026-09-11, License - CC BY-SA 4.0
+
+Route::get('/', [App\Http\Controllers\ProductController::class, 'index']);
